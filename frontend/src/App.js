@@ -2,11 +2,12 @@ import { Route, createBrowserRouter, createRoutesFromElements, RouterProvider } 
 import Home from "./pages/Home";
 import Events, { eventLoader } from "./pages/Events";
 import EventsDetail, { loader as eventDetailLoader, action as deleteEventAction } from "./pages/EventsDetail";
-import NewEvent, { action as newEventAction } from "./pages/NewEvent";
+import NewEvent from "./pages/NewEvent";
 import EditEvent from "./pages/EditEvent";
 import EventRoot from "./pages/EventRoot";
 import Root from "./pages/Root";
 import ErrorPage from "./pages/Error";
+import {action as manipulateEventAction} from "./components/EventForm";
 
 
 const router = createBrowserRouter(
@@ -17,11 +18,11 @@ const router = createBrowserRouter(
       <Route path="events" element={<EventRoot />}>
         <Route index element={<Events />} loader={eventLoader} />
 
-        <Route path="new" element={<NewEvent />} action={newEventAction} />
+        <Route path="new" element={<NewEvent />} action={manipulateEventAction} />
 
         <Route path=":eventId" loader={eventDetailLoader} id="event-detail">
           <Route index element={<EventsDetail />} action={deleteEventAction} />
-          <Route path="edit" element={<EditEvent />} />
+          <Route path="edit" element={<EditEvent />} action={manipulateEventAction} />
         </Route>
 
       </Route>
