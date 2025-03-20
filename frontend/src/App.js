@@ -1,6 +1,6 @@
 import { Route, createBrowserRouter, createRoutesFromElements, RouterProvider } from "react-router-dom";
 import Home from "./pages/Home";
-import Events, { eventLoader } from "./pages/Events";
+import Events, { loader as eventLoader } from "./pages/Events";
 import EventsDetail, { loader as eventDetailLoader, action as deleteEventAction } from "./pages/EventsDetail";
 import NewEvent from "./pages/NewEvent";
 import EditEvent from "./pages/EditEvent";
